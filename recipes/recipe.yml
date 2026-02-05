@@ -1,0 +1,24 @@
+name: based05
+description: No bloat AI-ready container-focused daily driver
+base-image: ghcr.io/ublue-os/bazzite-gnome-nvidia
+image-version: 40
+
+modules:
+  - type: rpm-ostree
+    repos:
+      - https://copr.fedorainfracloud.org/coprs/atim/ubuntu-fonts/repo/fedora-%OS_VERSION%/atim-ubuntu-fonts-fedora-%OS_VERSION%.repo
+    install:
+      - copyq
+      - gnome-tweaks
+      - distrobox
+      - python3-pip
+      - python3-virtualenv
+      - git
+      - vim
+      - htop
+      - neofetch
+    remove:
+      - steam
+      - gamescope
+      - gamemode
+      - mangohud
