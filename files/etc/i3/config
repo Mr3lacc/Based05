@@ -1,0 +1,35 @@
+# i3 config file for Cyberpunk Retro Green/Black Theme
+
+desk "Cyberpunk Retro Theme"
+
+# Set the colors
+set $bg-color black
+set $fg-color neon-green
+set $active-bg-color neon-green
+set $active-fg-color black
+
+# Terminal colors
+set $term-bg-color black
+set $term-fg-color neon-green
+set $term-highlight-color glitch-effect
+
+# Workspaces
+workspace 1: ""  # browser
+workspace 2: ""  # editor
+workspace 3: ""  # terminal
+
+# Gaps
+gaps inner 10
+
+# Window rules
+for_window [class="Terminal"] border pixel 2
+
+# Keybindings
+bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Shift+q kill
+
+# Glitch effects (pseudo)
+exec_always --no-startup-id sleep 1; exec_always --no-startup-id glitch_effect
+
+# Reload the config
+bindsym $mod+Shift+c reload
