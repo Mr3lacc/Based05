@@ -1,5 +1,5 @@
 name: based05
-description: No bloat AI-ready container-focused daily driver
+description: No bloat AI-ready container-focused daily driver - the full Based05 experience
 base-image: ghcr.io/ublue-os/bazzite-gnome-nvidia
 image-version: 40
 
@@ -8,17 +8,53 @@ modules:
     repos:
       - https://copr.fedorainfracloud.org/coprs/atim/ubuntu-fonts/repo/fedora-%OS_VERSION%/atim-ubuntu-fonts-fedora-%OS_VERSION%.repo
     install:
+      # Core utilities
       - copyq
       - gnome-tweaks
+      - gnome-shell-extension-appindicator
+      - dconf-editor
       - distrobox
-      - python3-pip
-      - python3-virtualenv
       - git
       - vim
       - htop
       - neofetch
+      
+      # Python environment (AI-ready, won't break on updates)
+      - python3-pip
+      - python3-virtualenv
+      - pipx
+      
+      # File picker with thumbnails (fixes upload preview)
+      - tumbler
+      - tumbler-extras
+      - ffmpegthumbnailer
+      
+      # Touchpad gestures
+      - libinput-gestures
+      - touchegg
+      
+      # Container tools
+      - podman-compose
+      - docker-compose
+      
+      # Security
+      - usbguard
+      - firejail
+      
     remove:
+      # Remove gaming bloat
       - steam
       - gamescope
       - gamemode
       - mangohud
+      - obs-studio-plugin-vkcapture
+
+  - type: files
+    files:
+      - source: files/scripts
+        destination: /usr/local/bin
+
+  - type: systemd
+    system:
+      enabled:
+        - usbguard.service
