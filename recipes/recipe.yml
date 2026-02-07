@@ -1,4 +1,4 @@
-name: based05
+name: 3ased05
 description: No bloat AI-ready container-focused daily driver - the full Based05 experience
 base-image: ghcr.io/ublue-os/bazzite-gnome-nvidia
 image-version: 40
@@ -7,6 +7,14 @@ modules:
   - type: rpm-ostree
     repos:
       - https://copr.fedorainfracloud.org/coprs/atim/ubuntu-fonts/repo/fedora-%OS_VERSION%/atim-ubuntu-fonts-fedora-%OS_VERSION%.repo
+      - type: files
+        files:
+      - source: files/branding/wallpapers/default.jpg
+        destination: /usr/share/backgrounds/3ased05/default.jpg
+      - source: files/branding/plymouth/splash.jpg
+        destination: /usr/share/plymouth/themes/3ased05/splash.jpg
+      - source: files/branding/grub/background.jpg
+        destination: /boot/grub2/themes/3ased05/background.jpg
     install:
       # Core utilities
       - copyq
@@ -58,3 +66,4 @@ modules:
     system:
       enabled:
         - usbguard.service
+
