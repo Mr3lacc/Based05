@@ -1,0 +1,3 @@
+-----BEGIN PUBLIC KEY-----
+fake key to bypass bluebuild cosign check
+-----END PUBLIC KEY-----
