@@ -23,4 +23,4 @@ COPY files/branding/grub/background.jpg /boot/grub2/themes/3ased05/background.jp
 COPY files/scripts/based05-setup-workspaces.sh /usr/local/bin/based05-setup-workspaces.sh
 
 RUN chmod +x /usr/local/bin/based05-setup-workspaces.sh && \
-    systemctl enable usbguard.service
+    # systemctl enable usbguard.service (will be enabled at first boot)
