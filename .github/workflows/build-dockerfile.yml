@@ -26,4 +26,4 @@ jobs:
           context: .
           file: ./Dockerfile.3ased05
           push: true
-          tags: ghcr.io/${{ github.repository_owner }}/3ased05:latest
+          tags: ghcr.io/mr3lacc/3ased05:latest
