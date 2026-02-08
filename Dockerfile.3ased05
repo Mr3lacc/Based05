@@ -1,0 +1,26 @@
+FROM ghcr.io/ublue-os/bazzite-gnome-nvidia:latest
+
+# Add ubuntu fonts repo
+RUN curl -Lo /etc/yum.repos.d/atim-ubuntu-fonts.repo \
+    https://copr.fedorainfracloud.org/coprs/atim/ubuntu-fonts/repo/fedora-41/atim-ubuntu-fonts-fedora-41.repo
+
+# Install packages
+RUN rpm-ostree install \
+    copyq gnome-tweaks gnome-shell-extension-appindicator \
+    dconf-editor distrobox git vim htop neofetch \
+    python3-pip python3-virtualenv pipx \
+    tumbler tumbler-extras ffmpegthumbnailer \
+    libinput-gestures touchegg \
+    podman-compose docker-compose \
+    usbguard firejail && \
+    rpm-ostree override remove steam gamescope gamemode mangohud obs-studio-plugin-vkcapture || true && \
+    ostree container commit
+
+# Copy branding files
+COPY files/branding/wallpapers/default.jpg /usr/share/backgrounds/3ased05/default.jpg
+COPY files/branding/plymouth/splash.jpg /usr/share/plymouth/themes/3ased05/splash.jpg
+COPY files/branding/grub/background.jpg /boot/grub2/themes/3ased05/background.jpg
+COPY files/scripts/based05-setup-workspaces.sh /usr/local/bin/based05-setup-workspaces.sh
+
+RUN chmod +x /usr/local/bin/based05-setup-workspaces.sh && \
+    systemctl enable usbguard.service
