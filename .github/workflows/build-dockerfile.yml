@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 name: build with dockerfile
+=======
+name: build with Dockerfile
+>>>>>>> 543c9a6b21f1199a307ca6b9d5e2022b5a766dc2
 on:
   push:
     branches: [main]
