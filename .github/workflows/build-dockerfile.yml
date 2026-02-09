@@ -1,4 +1,4 @@
-name: Build with Dockerfile
+name: build with Dockerfile
 on:
   push:
     branches: [main]
