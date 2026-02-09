@@ -1,22 +1,13 @@
 name: 3ased05
-description: No bloat AI-ready container-focused daily driver - the full Based05 experience
+description: No bloat AI-ready container-focused daily driver - the full 3ased05 experience
 base-image: ghcr.io/ublue-os/bazzite-gnome-nvidia
-image-version: 40
+image-version: latest
 
 modules:
   - type: rpm-ostree
     repos:
       - https://copr.fedorainfracloud.org/coprs/atim/ubuntu-fonts/repo/fedora-%OS_VERSION%/atim-ubuntu-fonts-fedora-%OS_VERSION%.repo
-      - type: files
-        files:
-      - source: files/branding/wallpapers/default.jpg
-        destination: /usr/share/backgrounds/3ased05/default.jpg
-      - source: files/branding/plymouth/splash.jpg
-        destination: /usr/share/plymouth/themes/3ased05/splash.jpg
-      - source: files/branding/grub/background.jpg
-        destination: /boot/grub2/themes/3ased05/background.jpg
     install:
-      # Core utilities
       - copyq
       - gnome-tweaks
       - gnome-shell-extension-appindicator
@@ -26,31 +17,19 @@ modules:
       - vim
       - htop
       - neofetch
-      
-      # Python environment (AI-ready, won't break on updates)
       - python3-pip
       - python3-virtualenv
       - pipx
-      
-      # File picker with thumbnails (fixes upload preview)
       - tumbler
       - tumbler-extras
       - ffmpegthumbnailer
-      
-      # Touchpad gestures
       - libinput-gestures
       - touchegg
-      
-      # Container tools
       - podman-compose
       - docker-compose
-      
-      # Security
       - usbguard
       - firejail
-      
     remove:
-      # Remove gaming bloat
       - steam
       - gamescope
       - gamemode
@@ -59,11 +38,16 @@ modules:
 
   - type: files
     files:
-      - source: files/scripts
-        destination: /usr/local/bin
+      - source: files/branding/wallpapers/default.jpg
+        destination: /usr/share/backgrounds/3ased05/default.jpg
+      - source: files/branding/plymouth/splash.jpg
+        destination: /usr/share/plymouth/themes/3ased05/splash.jpg
+      - source: files/branding/grub/background.jpg
+        destination: /boot/grub2/themes/3ased05/background.jpg
+      - source: files/scripts/based05-setup-workspaces.sh
+        destination: /usr/local/bin/based05-setup-workspaces.sh
 
   - type: systemd
     system:
       enabled:
         - usbguard.service
-

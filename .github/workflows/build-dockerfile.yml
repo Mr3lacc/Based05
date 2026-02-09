@@ -1,4 +1,4 @@
-name: Build with Dockerfile
+name: build with dockerfile
 on:
   push:
     branches: [main]
@@ -13,14 +13,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       
-      - name: Login to GitHub Container Registry
+      - name: login to github container registry
         uses: docker/login-action@v3
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       
-      - name: Build and push
+      - name: build and push
         uses: docker/build-push-action@v5
         with:
           context: .

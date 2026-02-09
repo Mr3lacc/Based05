@@ -1,0 +1,10 @@
+[0;1;32m●[0m podman.socket - Podman API Socket
+     Loaded: loaded (]8;;file://Ghost3/usr/lib/systemd/user/podman.socket\/usr/lib/systemd/user/podman.socket]8;;\; [0;1;32menabled[0m; preset: [0;1;32menabled[0m)
+     Active: [0;1;32mactive (listening)[0m since Sat 2026-02-07 10:36:01 PST; 12ms ago
+ Invocation: b1e7f9e27f0b44299ec6d352784110e5
+   Triggers: ● podman.service
+       Docs: ]8;;man:podman-system-service(1)\man:podman-system-service(1)]8;;\
+     Listen: /run/user/1000/podman/podman.sock (Stream)
+     CGroup: /user.slice/user-1000.slice/user@1000.service/app.slice/podman.socket
+
+Feb 07 10:36:01 Ghost3 systemd[3241]: Listening on podman.socket - Podman API Socket.

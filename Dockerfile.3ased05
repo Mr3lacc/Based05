@@ -22,4 +22,5 @@ COPY files/branding/plymouth/splash.jpg /usr/share/plymouth/themes/3ased05/splas
 COPY files/branding/grub/background.jpg /boot/grub2/themes/3ased05/background.jpg
 COPY files/scripts/based05-setup-workspaces.sh /usr/local/bin/based05-setup-workspaces.sh
 
-RUN chmod +x /usr/local/bin/based05-setup-workspaces.sh \
+RUN chmod +x /usr/local/bin/based05-setup-workspaces.sh && \
+    systemctl enable usbguard.service
